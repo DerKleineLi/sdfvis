@@ -33,7 +33,10 @@ def visualize_gt(
 
     if sdf is not None:
         # ax.plot(x, sdf, "k" + line_type, label="sdf", c=rgb)
-        ax.scatter(x, sdf, c=rgb, label="sdf", s=20, edgecolors="k")
+        if rgb is None:
+            ax.plot(x, sdf, "k" + line_type, label="sdf")
+        else:
+            ax.scatter(x, sdf, c=rgb, label="sdf", s=20, edgecolors="k")
     if density is not None:
         ax.plot(x, density, "r" + line_type, label="density")
     if alpha is not None:
